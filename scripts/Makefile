@@ -9,6 +9,7 @@ GOFILES = $(shell find . -type f -name '*.go')
 SHELL=/bin/bash
 ES_HOST?="elasticsearch-210"
 BUILD_DIR=build
+BEAT_DIR?=github.com/elastic
 COVERAGE_DIR=${BUILD_DIR}/coverage
 TIMEOUT?= 90
 BEATNAME?=libbeat
@@ -154,7 +155,7 @@ coverage-report:
 # Update expects the most recent version of libbeat in the GOPATH
 .PHONY: update
 update:
-	bash ${GOPATH}/src/github.com/elastic/libbeat/scripts/update.sh ${BEATNAME} github.com/elastic/${BEATNAME}
+	bash ${GOPATH}/src/github.com/elastic/libbeat/scripts/update.sh ${BEATNAME} ${BEAT_DIR}/${BEATNAME}
 
 
 
